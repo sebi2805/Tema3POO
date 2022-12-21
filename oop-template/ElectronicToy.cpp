@@ -4,9 +4,8 @@
 #include "BToyClass.h"
 using namespace std;
 ElectronicToy::ElectronicToy(const std::string _name, float _price, float _weight,
-                             const std::string _category, int _age, int _id,
-                             int numberBatteries) : BToyClass(_name, _price, _weight, _category, _age, _id),
-                                                    numberBaterries(numberBaterries)
+                             const std::string _category, int _age, int numberBatteries) : BToyClass(ToyType::Electronic, _name, _price, _weight, _category, _age),
+                                                                                           numberBaterries(numberBaterries)
 {
 }
 ElectronicToy::ElectronicToy(const ElectronicToy &obj) : BToyClass(obj)
@@ -44,15 +43,20 @@ void ElectronicToy::playSound()
 };
 void ElectronicToy::print(ostream &out)
 {
-    out << "        Numarul de baterii este: " << numberBaterries << endl;
+    BToyClass::print(out);
+    print(out);
 };
 ostream &operator<<(ostream &out, ElectronicToy &obj)
 {
-    out << *dynamic_cast<BToyClass *>(&obj);
+
+    obj.BToyClass::print(out);
     obj.print(out);
     return out;
 };
-
+void ElectronicToy::printSubClass(ostream &out)
+{
+    out << "        Numarul de baterii este: " << numberBaterries << endl;
+};
 istream &operator>>(istream &in, ElectronicToy &obj)
 {
     in >> *dynamic_cast<BToyClass *>(&obj);
@@ -61,3 +65,7 @@ istream &operator>>(istream &in, ElectronicToy &obj)
 
     return in;
 };
+Clone *ElectronicToy::clone()
+{
+    return new ElectronicToy(*this);
+}

@@ -4,9 +4,8 @@
 #include "BToyClass.h"
 
 EducativeToy::EducativeToy(const std::string _name, float _price, float _weight,
-                           const std::string _category, int _age, int _id,
-                           std::string abilityLearned) : BToyClass(_name, _price, _weight, _category, _age, _id),
-                                                         abilityLearned(abilityLearned)
+                           const std::string _category, int _age, std::string abilityLearned) : BToyClass(ToyType::Educative, _name, _price, _weight, _category, _age),
+                                                                                                abilityLearned(abilityLearned)
 {
 }
 EducativeToy::EducativeToy(const EducativeToy &obj) : BToyClass(obj)
@@ -43,14 +42,20 @@ EducativeToy &EducativeToy::operator=(const EducativeToy &obj)
 
 void EducativeToy::print(ostream &out)
 {
-    out << "        Abilitatea dezvoltata este: " << abilityLearned << endl;
+    out << *dynamic_cast<BToyClass *>(this);
+    printSubClass(out);
 }
 ostream &operator<<(ostream &out, EducativeToy &obj)
 {
-    out << *dynamic_cast<BToyClass *>(&obj);
-    obj.print(out);
+    obj.BToyClass::print(out);
+    obj.printSubClass(out);
     return out;
 };
+void EducativeToy::printSubClass(ostream &out)
+{
+    out << "        Abilitatea dezvoltata este: " << abilityLearned << endl;
+};
+
 istream &operator>>(istream &in, EducativeToy &obj)
 {
     in >> *dynamic_cast<BToyClass *>(&obj);
@@ -58,4 +63,8 @@ istream &operator>>(istream &in, EducativeToy &obj)
     in.ignore();
     getline(in, obj.abilityLearned);
     return in;
+};
+Clone *EducativeToy::clone()
+{
+    return new EducativeToy(*this);
 };

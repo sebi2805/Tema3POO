@@ -3,6 +3,13 @@
 #include "InterfaceClass.h"
 #include "ClassicToy.h"
 #include "MyExceptions.h"
+InterfaceMenu *InterfaceMenu::singleTone = nullptr;
+InterfaceMenu *InterfaceMenu::getInstance()
+{
+    if (singleTone == nullptr)
+        singleTone = new InterfaceMenu();
+    return singleTone;
+}
 void InterfaceMenu::printMessage()
 {
     std::cout << "Tema numarul 2 \n Virtopeanu Sebastian-Filip\n CTI, GRUPA 264\n";

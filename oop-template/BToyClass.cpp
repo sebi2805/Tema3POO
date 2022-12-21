@@ -2,13 +2,13 @@
 #include <string>
 #include "BToyClass.h"
 using namespace std;
-BToyClass::BToyClass(const string _name, float _price, float _weight, const string _category, int _age, int _id)
-    : category(_category), name(_name), price(_price), weight(_weight), age(_age), id(_id)
+BToyClass::BToyClass(ToyType type, const string _name, float _price, float _weight, const string _category, int _age)
+    : category(_category), name(_name), price(_price), weight(_weight), age(_age), type(type)
 {
 }
 BToyClass::BToyClass(const BToyClass &obj)
     : name(obj.name), category(obj.category), price(obj.price),
-      weight(obj.weight), age(obj.age), id(obj.id)
+      weight(obj.weight), age(obj.age)
 {
 }
 BToyClass &BToyClass::operator=(const BToyClass &obj)
@@ -147,12 +147,12 @@ void BToyClass::updateToy()
         }
     } while (j != 0);
 }
-void BToyClass::setId(int _id)
-{
 
-    id = _id;
-}
 Clone *BToyClass::clone()
 {
     return new BToyClass(*this);
+}
+void BToyClass::playSound()
+{
+    std::cout << "Hi I'm base toy";
 }

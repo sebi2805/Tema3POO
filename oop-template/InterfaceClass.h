@@ -4,18 +4,24 @@
 #include "Gift.h"
 #include <memory>
 
-class InterfaceMenu
+class InterfaceMenu // Here we use the singletone design patter
 {
 private:
     std::vector<unique_ptr<Gift>> allGifts;
     int i;
+    static InterfaceMenu *singleTone;
 
 public:
     static void printMessage();
-    InterfaceMenu(){};
+    InterfaceMenu(){
+
+    };
+    InterfaceMenu(InterfaceMenu &menu) = delete;
+    InterfaceMenu &operator=(InterfaceMenu &obj) = delete;
     void start();
     ~InterfaceMenu()
     {
     }
+    static InterfaceMenu *getInstance();
 };
 #endif

@@ -2,7 +2,8 @@
 #define CLASSIC_TOY
 #include "BToyClass.h"
 #include "BPlay.h"
-class ClassicToy : public BToyClass, BPlay
+#include "Clone.h"
+class ClassicToy : public BToyClass
 {
     std::string material, color;
 
@@ -15,6 +16,9 @@ public:
     const std::string getColor() const;
     void setMaterial(const string _material);
     void playSound() override;
+    Clone *clone() override;
+    void print(ostream &out) override;
+    void printSubClass(ostream &out);
     void setColor(const std::string _culoare);
     bool operator==(const ClassicToy &obj);
     bool operator!=(const ClassicToy &obj);

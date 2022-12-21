@@ -8,14 +8,11 @@
 #include "ModernToy.h"
 #include "MyExceptions.h"
 #include <typeinfo>
-int Gift::idClass = 1;
+
 Gift::Gift(const std::string _name, const std::string _destination,
            const std::string _personName, std::vector<shared_ptr<BToyClass>> _toys, int _toysLength)
     : name(_name), destination(_destination), personName(_personName), toysLength(_toysLength), toys(_toys)
 {
-    id = idClass;
-    idClass++;
-    idToys++;
 }
 Gift::Gift(const Gift &obj) : toysLength(obj.toysLength), name(obj.name), destination(obj.destination),
                               personName(obj.personName), toys(obj.toys)
@@ -72,33 +69,14 @@ ostream &operator<<(ostream &out, Gift &obj)
         << " Id: " << obj.id << ". Numele cadoului este "
         << obj.name << " cu destinatia " << obj.destination << " pentru persoana " << obj.personName;
     out << endl;
-    for (int i = 0; i < obj.toys.size(); i++)
+    for (const auto &toy : obj.toys)
     {
-        if (dynamic_cast<ClassicToy *>(obj.toys[i].get()))
-        {
-            out << "ClassicToy" << endl;
-            out << *dynamic_cast<ClassicToy *>(obj.toys[i].get());
-        }
-        else if (dynamic_cast<ModernToy *>(obj.toys[i].get()))
-        {
-            out << "ModernToy" << endl;
-            out << *dynamic_cast<ModernToy *>(obj.toys[i].get());
-        }
-        else if (dynamic_cast<ElectronicToy *>(obj.toys[i].get()))
-        {
-            out << "ElectronicToy" << endl;
-            out << *dynamic_cast<ElectronicToy *>(obj.toys[i].get());
-        }
-        else if (dynamic_cast<EducativeToy *>(obj.toys[i].get()))
-        {
-            out << "EducativeToy" << endl;
-            out << *dynamic_cast<EducativeToy *>(obj.toys[i].get());
-        }
+        toy->print(out);
     }
-
     out << endl;
     return out;
 }
+
 bool operator==(const Gift &lhs, const Gift &rhs)
 {
 
@@ -117,10 +95,7 @@ bool operator==(const Gift &lhs, const Gift &rhs)
 
     return res;
 }
-const int Gift::getCurrentId()
-{
-    return idClass;
-}
+
 const int Gift::getToysLength() const
 {
     return toysLength;
@@ -145,10 +120,7 @@ const std::string Gift::getPersonName() const
 {
     return personName;
 };
-const int Gift::getId() const
-{
-    return id;
-};
+
 void Gift::setName(const std::string _name)
 {
     name = _name;
@@ -311,7 +283,9 @@ void updateToyHelper(istream &in, Gift &obj, bool update)
             throw ToyTypeExceptions();
             break;
         }
-        obj.toys[j]->setId(obj.idToys);
-        obj.idToys++;
     }
+}
+Clone *Gift::clone()
+{
+    return new Gift(*this);
 }

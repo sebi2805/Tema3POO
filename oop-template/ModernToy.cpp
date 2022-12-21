@@ -5,12 +5,13 @@
 #include "EducativeToy.h"
 
 ModernToy::ModernToy(const std::string _name, float _price, float _weight,
-                     const std::string _category, int _age, int _id,
-                     std::string brand, int _numberBatteries, std::string abilityLearned) : ElectronicToy(_name, _price, _weight, _category, _age, _id, _numberBatteries),
-                                                                                            EducativeToy(_name, _price, _weight, _category, _age, _id, abilityLearned), brand(brand)
+                     const std::string _category, int _age, std::string brand, int _numberBatteries,
+                     std::string abilityLearned)
+    : ElectronicToy(_name, _price, _weight, _category, _age, _numberBatteries),
+      EducativeToy(_name, _price, _weight, _category, _age, abilityLearned), brand(brand), BToyClass(ToyType::Modern)
 {
 }
-ModernToy::ModernToy(const ModernToy &obj) : ElectronicToy(obj), EducativeToy(obj)
+ModernToy::ModernToy(const ModernToy &obj) : ElectronicToy(obj), EducativeToy(obj), BToyClass(ToyType::Modern)
 {
     brand = obj.brand;
 }
@@ -45,11 +46,10 @@ void ModernToy::playSound()
 };
 ostream &operator<<(ostream &out, ModernToy &obj)
 {
-
-    out << *dynamic_cast<BToyClass *>(&obj);
-    dynamic_cast<EducativeToy *>(&obj)->print(out);
-    dynamic_cast<ElectronicToy *>(&obj)->print(out);
-    out << "        Brandul este: " << obj.brand << endl;
+    obj.BToyClass::print(out);
+    obj.ElectronicToy::printSubClass(out);
+    obj.EducativeToy::printSubClass(out);
+    obj.printSubClass(out);
     return out;
 };
 istream &operator>>(istream &in, ModernToy &obj)
@@ -61,3 +61,19 @@ istream &operator>>(istream &in, ModernToy &obj)
 
     return in;
 };
+void ModernToy::printSubClass(ostream &out)
+{
+    out << "        Brandul este: " << brand << endl;
+}
+void ModernToy::print(ostream &out)
+{
+    out << *this;
+}
+void playSound()
+{
+    cout << "Hi I'm Modern Toy" << endl;
+}
+Clone *ModernToy::clone()
+{
+    return new ModernToy(*this);
+}

@@ -11,6 +11,7 @@ using namespace std;
 int main()
 {
     InterfaceMenu menu;
+    menu.getInstance()->printMessage();
     menu.printMessage();
     try
     {

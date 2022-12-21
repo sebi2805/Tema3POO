@@ -6,7 +6,7 @@
 
 ClassicToy::ClassicToy(const std::string _name, float _price, float _weight,
                        const std::string _category, int _age, int _id,
-                       std::string material, string color) : BToyClass(_name, _price, _weight, _category, _age, _id),
+                       std::string material, string color) : BToyClass(ToyType::Classic, _name, _price, _weight, _category, _age),
                                                              material(material), color(color)
 {
 }
@@ -48,15 +48,26 @@ ClassicToy &ClassicToy::operator=(const ClassicToy &obj)
 };
 ostream &operator<<(ostream &out, ClassicToy &obj)
 {
-
-    out << *(dynamic_cast<BToyClass *>(&obj))
-        << "        Material este: " << obj.material << " si culoarea: " << obj.color << endl;
+    obj.BToyClass::print(out);
+    obj.printSubClass(out);
     return out;
 };
+
 void ClassicToy::playSound()
 {
     std::cout << "Hi! I'm " << getName() << " and I'm a classic toy." << endl;
 };
+void ClassicToy::printSubClass(ostream &out)
+{
+    out << "        Material este: " << material << " si culoarea: " << color << endl;
+};
+
+void ClassicToy::print(ostream &out)
+{
+    BToyClass::print(out);
+    printSubClass(out);
+};
+
 istream &operator>>(istream &in, ClassicToy &obj)
 {
     in >> static_cast<BToyClass &>(obj);
@@ -67,3 +78,7 @@ istream &operator>>(istream &in, ClassicToy &obj)
     getline(in, obj.color);
     return in;
 };
+Clone *ClassicToy::clone()
+{
+    return new ClassicToy(*this);
+}
