@@ -18,6 +18,7 @@ public:
     void playSound() override;
     Clone *clone() override;
     void print(ostream &out) override;
+    void read(istream &in) override;
     void printSubClass(ostream &out);
     void setColor(const std::string _culoare);
     bool operator==(const ClassicToy &obj);

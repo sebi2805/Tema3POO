@@ -77,3 +77,7 @@ Clone *ModernToy::clone()
 {
     return new ModernToy(*this);
 }
+void ModernToy::read(istream &in)
+{
+    in >> *this;
+}

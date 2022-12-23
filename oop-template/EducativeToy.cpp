@@ -61,10 +61,15 @@ istream &operator>>(istream &in, EducativeToy &obj)
     in >> *dynamic_cast<BToyClass *>(&obj);
     std::cout << "Introduceti abilitatea dezvoltata:" << endl;
     in.ignore();
+
     getline(in, obj.abilityLearned);
     return in;
 };
 Clone *EducativeToy::clone()
 {
     return new EducativeToy(*this);
+};
+void EducativeToy::read(istream &in)
+{
+    in >> *this;
 };

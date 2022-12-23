@@ -2,6 +2,7 @@
 #define INTERFACE_CLASS
 #include <iostream>
 #include "Gift.h"
+#include "GiftBuilder.h"
 #include <memory>
 
 class InterfaceMenu // Here we use the singletone design patter
@@ -9,6 +10,7 @@ class InterfaceMenu // Here we use the singletone design patter
 private:
     std::vector<unique_ptr<Gift>> allGifts;
     int i;
+    GiftBuilder giftBuilder;
     static InterfaceMenu *singleTone;
 
 public:

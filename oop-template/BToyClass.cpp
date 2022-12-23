@@ -156,3 +156,7 @@ void BToyClass::playSound()
 {
     std::cout << "Hi I'm base toy";
 }
+void BToyClass::read(istream &in)
+{
+    in >> *this;
+};

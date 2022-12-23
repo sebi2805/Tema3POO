@@ -5,6 +5,7 @@
 class ElectronicToy : virtual public BToyClass
 {
     int numberBaterries;
+    Packing<string> packing{"Plastic"};
 
 public:
     ElectronicToy(const string _name = "undefined", float _price = 0, float _weight = 0,
@@ -18,6 +19,7 @@ public:
     Clone *clone() override;
     void printSubClass(ostream &out);
     void print(ostream &out) override;
+    void read(istream &in) override;
     ElectronicToy &operator=(const ElectronicToy &obj);
     friend ostream &operator<<(ostream &out, ElectronicToy &obj);
     friend istream &operator>>(istream &in, ElectronicToy &obj);

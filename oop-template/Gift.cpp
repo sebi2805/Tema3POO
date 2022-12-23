@@ -73,6 +73,7 @@ ostream &operator<<(ostream &out, Gift &obj)
     {
         toy->print(out);
     }
+
     out << endl;
     return out;
 }
@@ -237,45 +238,59 @@ void Gift::summariseGift()
 }
 void updateToyHelper(istream &in, Gift &obj, bool update)
 {
-    cout << "sebi update";
+
     update ? obj.toysLength++ : obj.toysLength;
     for (int j = update ? obj.toysLength - 2 : 0; j < (update ? obj.toysLength - 1 : obj.toysLength); j++)
     {
         cout << j << " " << obj.toysLength;
-        int type;
+        int i;
+        ToyType toyType;
         std::cout << "**************Jucaria numarul: "
                   << "**************\n**********************" << j + 1 << "**********************\nIntroduceti numele jucariei\n";
         std::cout << endl
                   << "Ce tip de jucarie vreti sa introduceti?\n1.ClassicToy\n2.ElectronicToy\n3.EducativeToy\n4.ModernToy\n";
-        in >> type;
-        switch (type)
+        in >> i;
+        switch (i)
         {
         case 1:
+            toyType = ToyType::Classic;
+            break;
+        case 2:
+            toyType = ToyType::Electronic;
+            break;
+        case 3:
+            toyType = ToyType::Educative;
+            break;
+        case 4:
+            toyType = ToyType::Modern;
+            break;
+        default:
+            throw ToyTypeExceptions();
+        }
+        switch (toyType)
+        {
+        case ToyType::Classic:
         {
             obj.toys.push_back(make_shared<ClassicToy>());
-            in >> *dynamic_cast<ClassicToy *>(obj.toys[j].get());
+            obj.toys[j]->read(cin);
             break;
         }
-
-        case 2:
+        case ToyType::Electronic:
         {
-
             obj.toys.push_back(make_shared<ElectronicToy>());
-            in >> *dynamic_cast<ElectronicToy *>(obj.toys[j].get());
-
+            obj.toys[j]->read(cin);
             break;
         }
-        case 3:
+        case ToyType::Educative:
         {
             obj.toys.push_back(make_shared<EducativeToy>());
-            in >> *dynamic_cast<EducativeToy *>(obj.toys[j].get());
+            obj.toys[j]->read(cin);
             break;
         }
-        case 4:
+        case ToyType::Modern:
         {
             obj.toys.push_back(make_shared<ModernToy>());
-            in >> *dynamic_cast<ModernToy *>(obj.toys[j].get());
-
+            obj.toys[j]->read(cin);
             break;
         }
 

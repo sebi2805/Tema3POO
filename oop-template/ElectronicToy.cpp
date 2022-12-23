@@ -44,7 +44,7 @@ void ElectronicToy::playSound()
 void ElectronicToy::print(ostream &out)
 {
     BToyClass::print(out);
-    print(out);
+    printSubClass(out);
 };
 ostream &operator<<(ostream &out, ElectronicToy &obj)
 {
@@ -61,6 +61,7 @@ istream &operator>>(istream &in, ElectronicToy &obj)
 {
     in >> *dynamic_cast<BToyClass *>(&obj);
     std::cout << "Introduceti numarul de baterii:" << endl;
+
     in >> obj.numberBaterries;
 
     return in;
@@ -69,3 +70,7 @@ Clone *ElectronicToy::clone()
 {
     return new ElectronicToy(*this);
 }
+void ElectronicToy::read(istream &in)
+{
+    in >> *this;
+};

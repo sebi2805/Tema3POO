@@ -3,10 +3,11 @@
 #include "BToyClass.h"
 #include "BPlay.h"
 #include "Clone.h"
+#include "Packing.h"
 class EducativeToy : virtual public BToyClass
 {
     string abilityLearned;
-
+    Packing<string> packing{"Paper"}; // Here we use the template
 public:
     EducativeToy(const string _name = "undefined", float _price = 0, float _weight = 0,
                  const string _category = "none", int _age = 3, string abilityLearned = "general");
@@ -16,6 +17,7 @@ public:
     bool operator==(const EducativeToy &obj);
     bool operator!=(const EducativeToy &obj);
     void print(ostream &out) override;
+    void read(istream &in) override;
     void printSubClass(ostream &out);
     void playSound() override;
     Clone *clone() override;

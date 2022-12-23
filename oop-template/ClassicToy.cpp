@@ -82,3 +82,7 @@ Clone *ClassicToy::clone()
 {
     return new ClassicToy(*this);
 }
+void ClassicToy::read(istream &in)
+{
+    in >> *this;
+};
