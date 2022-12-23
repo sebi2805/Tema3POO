@@ -7,7 +7,7 @@
 class EducativeToy : virtual public BToyClass
 {
     string abilityLearned;
-    Packing<string> packing{"Paper"}; // Here we use the template
+
 public:
     EducativeToy(const string _name = "undefined", float _price = 0, float _weight = 0,
                  const string _category = "none", int _age = 3, string abilityLearned = "general");

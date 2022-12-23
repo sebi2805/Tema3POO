@@ -5,7 +5,6 @@
 class ElectronicToy : virtual public BToyClass
 {
     int numberBaterries;
-    Packing<string> packing{"Plastic"};
 
 public:
     ElectronicToy(const string _name = "undefined", float _price = 0, float _weight = 0,

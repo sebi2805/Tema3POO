@@ -7,12 +7,12 @@
 class ModernToy : public ElectronicToy, EducativeToy
 {
     std::string brand;
-    Packing<Box> packing{Box(10, 10, 2)};
+    Packing<Box> packing{Box(10, 10, 2, "red")};
 
 public:
-    using BToyClass::clone;
-    using BToyClass::print;
-    using BToyClass::read;
+    // using BToyClass::clone;
+    // using BToyClass::print;
+    // using BToyClass::read;
     ModernToy(const std::string _name = "undefined", float _price = 0, float _weight = 0,
               const std::string _category = "none", int _age = 3, std::string brand = "general", int numberBatteries = 1, std::string abilityLearned = "general");
     ModernToy(const ModernToy &obj);

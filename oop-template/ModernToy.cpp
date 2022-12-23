@@ -64,6 +64,7 @@ istream &operator>>(istream &in, ModernToy &obj)
 void ModernToy::printSubClass(ostream &out)
 {
     out << "        Brandul este: " << brand << endl;
+    packing.print(out);
 }
 void ModernToy::print(ostream &out)
 {

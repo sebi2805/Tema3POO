@@ -60,6 +60,7 @@ void ClassicToy::playSound()
 void ClassicToy::printSubClass(ostream &out)
 {
     out << "        Material este: " << material << " si culoarea: " << color << endl;
+    packing.print(out);
 };
 
 void ClassicToy::print(ostream &out)

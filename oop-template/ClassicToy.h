@@ -2,10 +2,12 @@
 #define CLASSIC_TOY
 #include "BToyClass.h"
 #include "BPlay.h"
+#include "Packing.h"
 #include "Clone.h"
 class ClassicToy : public BToyClass
 {
     std::string material, color;
+    Packing<Bag> packing{Bag("red")};
 
 public:
     ClassicToy(const std::string _name = "undefined", float _price = 0, float _weight = 0,
