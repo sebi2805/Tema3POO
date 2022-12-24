@@ -16,11 +16,11 @@ public:
     bool operator!=(const ElectronicToy &obj);
     void playSound() override;
     Clone *clone() override;
-    void printSubClass(ostream &out);
-    void print(ostream &out) override;
+    void printSubClass(ostream &out) const;
+    void print(ostream &out) const override;
     void read(istream &in) override;
     ElectronicToy &operator=(const ElectronicToy &obj);
-    friend ostream &operator<<(ostream &out, ElectronicToy &obj);
+    friend ostream &operator<<(ostream &out, const ElectronicToy &obj);
     friend istream &operator>>(istream &in, ElectronicToy &obj);
     virtual ~ElectronicToy() {}
 };

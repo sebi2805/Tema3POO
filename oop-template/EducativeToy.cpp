@@ -40,9 +40,9 @@ EducativeToy &EducativeToy::operator=(const EducativeToy &obj)
     return *this;
 };
 
-void EducativeToy::print(ostream &out)
+void EducativeToy::print(ostream &out) const
 {
-    out << *dynamic_cast<BToyClass *>(this);
+    out << *dynamic_cast<const BToyClass *>(this);
     printSubClass(out);
 }
 ostream &operator<<(ostream &out, EducativeToy &obj)
@@ -51,7 +51,7 @@ ostream &operator<<(ostream &out, EducativeToy &obj)
     obj.printSubClass(out);
     return out;
 };
-void EducativeToy::printSubClass(ostream &out)
+void EducativeToy::printSubClass(ostream &out) const
 {
     out << "        Abilitatea dezvoltata este: " << abilityLearned << endl;
 };

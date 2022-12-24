@@ -16,12 +16,12 @@ public:
     void setAbilityLearned(const string _abilityLearned);
     bool operator==(const EducativeToy &obj);
     bool operator!=(const EducativeToy &obj);
-    void print(ostream &out) override;
+    void print(ostream &out) const override;
     void read(istream &in) override;
-    void printSubClass(ostream &out);
+    void printSubClass(ostream &out) const;
     void playSound() override;
     Clone *clone() override;
-    friend ostream &operator<<(ostream &out, EducativeToy &obj);
+    friend ostream &operator<<(ostream &out, const EducativeToy &obj);
     friend istream &operator>>(istream &in, EducativeToy &obj);
     EducativeToy &operator=(const EducativeToy &obj);
     virtual ~EducativeToy()

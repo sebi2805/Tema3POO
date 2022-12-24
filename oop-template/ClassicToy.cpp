@@ -46,7 +46,7 @@ ClassicToy &ClassicToy::operator=(const ClassicToy &obj)
     color = obj.color;
     return *this;
 };
-ostream &operator<<(ostream &out, ClassicToy &obj)
+ostream &operator<<(ostream &out, const ClassicToy &obj)
 {
     obj.BToyClass::print(out);
     obj.printSubClass(out);
@@ -57,13 +57,13 @@ void ClassicToy::playSound()
 {
     std::cout << "Hi! I'm " << getName() << " and I'm a classic toy." << endl;
 };
-void ClassicToy::printSubClass(ostream &out)
+void ClassicToy::printSubClass(ostream &out) const
 {
     out << "        Material este: " << material << " si culoarea: " << color << endl;
     packing.print(out);
 };
 
-void ClassicToy::print(ostream &out)
+void ClassicToy::print(ostream &out) const
 {
     BToyClass::print(out);
     printSubClass(out);

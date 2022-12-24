@@ -20,12 +20,12 @@ public:
     void setBrand(const std::string _abilityLearned);
     bool operator==(const ModernToy &obj);
     bool operator!=(const ModernToy &obj);
-    void print(ostream &out) override;
+    void print(ostream &out) const override;
     void read(istream &in) override;
     void playSound() override;
-    void printSubClass(ostream &out);
+    void printSubClass(ostream &out) const;
     Clone *clone() override;
-    friend ostream &operator<<(ostream &out, ModernToy &obj);
+    friend ostream &operator<<(ostream &out, const ModernToy &obj);
     friend istream &operator>>(istream &in, ModernToy &obj);
     ModernToy &operator=(const ModernToy &obj);
     virtual ~ModernToy() {}

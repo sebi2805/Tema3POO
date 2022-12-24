@@ -41,19 +41,19 @@ void ElectronicToy::playSound()
 {
     std::cout << "Hi! I'm " << getName() << " and I'm a electronic toy." << endl;
 };
-void ElectronicToy::print(ostream &out)
+void ElectronicToy::print(ostream &out) const
 {
     BToyClass::print(out);
     printSubClass(out);
 };
-ostream &operator<<(ostream &out, ElectronicToy &obj)
+ostream &operator<<(ostream &out, const ElectronicToy &obj)
 {
 
     obj.BToyClass::print(out);
     obj.print(out);
     return out;
 };
-void ElectronicToy::printSubClass(ostream &out)
+void ElectronicToy::printSubClass(ostream &out) const
 {
     out << "        Numarul de baterii este: " << numberBaterries << endl;
 };

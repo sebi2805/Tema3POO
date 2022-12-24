@@ -33,7 +33,7 @@ bool BToyClass::operator!=(const BToyClass &obj)
     bool res = !(*this == obj);
     return res; // !(*this == rhs)
 };
-ostream &operator<<(ostream &out, BToyClass &obj)
+ostream &operator<<(ostream &out, const BToyClass &obj)
 {
     string objName = typeid(obj).name();
 
@@ -94,7 +94,7 @@ void BToyClass::setWeight(float _weight)
 {
     weight = _weight;
 };
-void BToyClass::print(ostream &out)
+void BToyClass::print(ostream &out) const
 {
     out << *this;
 };

@@ -44,7 +44,7 @@ void ModernToy::playSound()
 {
     std::cout << "Hi! I'm " << getName() << " and I'm a modern toy." << endl;
 };
-ostream &operator<<(ostream &out, ModernToy &obj)
+ostream &operator<<(ostream &out, const ModernToy &obj)
 {
     obj.BToyClass::print(out);
     obj.ElectronicToy::printSubClass(out);
@@ -61,12 +61,12 @@ istream &operator>>(istream &in, ModernToy &obj)
 
     return in;
 };
-void ModernToy::printSubClass(ostream &out)
+void ModernToy::printSubClass(ostream &out) const
 {
     out << "        Brandul este: " << brand << endl;
     packing.print(out);
 }
-void ModernToy::print(ostream &out)
+void ModernToy::print(ostream &out) const
 {
     out << *this;
 }

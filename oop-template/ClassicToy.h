@@ -19,13 +19,13 @@ public:
     void setMaterial(const string _material);
     void playSound() override;
     Clone *clone() override;
-    void print(ostream &out) override;
+    void print(ostream &out) const override;
     void read(istream &in) override;
-    void printSubClass(ostream &out);
+    void printSubClass(ostream &out) const;
     void setColor(const std::string _culoare);
     bool operator==(const ClassicToy &obj);
     bool operator!=(const ClassicToy &obj);
-    friend ostream &operator<<(ostream &out, ClassicToy &obj);
+    friend ostream &operator<<(ostream &out, const ClassicToy &obj);
     friend istream &operator>>(istream &in, ClassicToy &obj);
     ClassicToy &operator=(const ClassicToy &obj);
 };

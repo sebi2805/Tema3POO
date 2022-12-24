@@ -71,7 +71,7 @@ ostream &operator<<(ostream &out, Gift &obj)
     out << endl;
     for (const auto &toy : obj.toys)
     {
-        toy->print(out);
+        obj.printToy(*toy, out);
     }
 
     out << endl;

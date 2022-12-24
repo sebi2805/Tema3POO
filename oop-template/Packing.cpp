@@ -2,15 +2,21 @@
 #include <ostream>
 #include <iostream>
 template <typename T>
-void Packing<T>::print(std::ostream &out)
+void Packing<T>::print(std::ostream &out) const
 {
     out << "The packing is: " << type << std::endl;
 };
-void Packing<Box>::print(std::ostream &out)
+template <>
+void Packing<Box>::print(std::ostream &out) const
 {
     out << "The packing is: box and the volume of the box is " << type.getVolume() << std::endl;
 };
-void Box::print(std::ostream &out)
+template <>
+void Packing<Bag>::print(std::ostream &out) const
+{
+    type.print(out);
+};
+void Box::print(std::ostream &out) const
 {
     out << "The box is: " << height << "x" << width << "x" << length << std::endl;
 }
@@ -39,7 +45,11 @@ const std::string Box::getColor() const
 {
     return color;
 }
-void Bag::print(std::ostream &out)
+// void Bag::print(std::ostream &out) const
+// {
+//     out << "The bag is: " << color << std::endl;
+// }
+void Bag::print(std::ostream &out) const
 {
     out << "The bag is: " << color << std::endl;
 }

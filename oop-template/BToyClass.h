@@ -30,9 +30,9 @@ public:
                        float _weight = 0, const string _category = "none", int _age = 3);
     BToyClass(const BToyClass &obj);
     BToyClass &operator=(const BToyClass &obj);
-    virtual void print(ostream &out);
+    virtual void print(ostream &out) const;
     virtual void read(istream &in);
-    friend ostream &operator<<(ostream &out, BToyClass &obj);
+    friend ostream &operator<<(ostream &out, const BToyClass &obj);
     friend istream &operator>>(istream &in, BToyClass &obj);
     bool operator==(const BToyClass &obj);
     bool operator!=(const BToyClass &obj);
