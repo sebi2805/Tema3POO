@@ -12,6 +12,11 @@ void Packing<Box>::print(std::ostream &out) const
     out << "The packing is: box and the volume of the box is " << type.getVolume() << std::endl;
 };
 template <>
+void printTemplate(Box &obj)
+{
+    std::cout << "The box is: " << obj.getVolume() << std::endl;
+};
+template <>
 void Packing<Bag>::print(std::ostream &out) const
 {
     type.print(out);

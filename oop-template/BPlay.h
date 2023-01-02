@@ -5,5 +5,6 @@ class BPlay
 {
 public:
     virtual void playSound() = 0;
+    virtual ~BPlay() {}
 };
 #endif

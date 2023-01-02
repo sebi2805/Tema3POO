@@ -3,6 +3,11 @@
 
 #include <iostream>
 #include <ostream>
+template <typename T>
+void printTemplate(T &obj)
+{
+    std::cout << obj << std::endl;
+}
 template <typename T> // Here we use the template
 class Packing
 {
@@ -36,6 +41,7 @@ public:
     friend std::ostream &operator<<(std::ostream &out, Box &obj);
     const std::string getColor() const;
     void operator=(const Box &obj);
+    friend void printTemplate(Box &obj);
     int getVolume() const;
     virtual ~Box() {}
 };

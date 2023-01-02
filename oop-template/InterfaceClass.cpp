@@ -48,10 +48,14 @@ void InterfaceMenu::start()
             if (allGifts.size() == 0)
             {
 
-                allGifts.push_back(make_unique<Gift>());
+                allGifts.push_back(std::make_unique<Gift>());
                 std::cin >> *(allGifts[0]);
                 // dynamic_cast<ClassicToy *>((*allGifts[0]).getToys()[0].get())->playSound();
                 // cout << "Jucarie:" << *dynamic_cast<ClassicToy *>(allGifts[0]->getToys()[0]) << endl;
+                // ElectronicToy *x = dynamic_cast<ElectronicToy *>((*allGifts[0]).getToys()[0]->clone());
+                // x->setAge(20000);
+                // std::cout << "Jucarie:" << x->getAge() << endl;
+                // std::cout << (*allGifts[0]).getToys()[0]->getAge();
             }
             else
                 std::cout << "Ati configurat deja primul cadou" << endl;
