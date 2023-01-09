@@ -8,7 +8,12 @@
 #include "ModernToy.h"
 #include "MyExceptions.h"
 #include <typeinfo>
+template <>
+void Gift::printToy<std::shared_ptr<BToyClass>>(const std::shared_ptr<BToyClass> &toy, std::ostream &out)
+{
 
+    toy->print(out);
+}
 Gift::Gift(const std::string _name, const std::string _destination,
            const std::string _personName, std::vector<shared_ptr<BToyClass>> _toys, int _toysLength)
     : name(_name), destination(_destination), personName(_personName), toysLength(_toysLength), toys(_toys)
@@ -71,7 +76,7 @@ ostream &operator<<(ostream &out, Gift &obj)
     out << endl;
     for (const auto &toy : obj.toys)
     {
-        obj.printToy(*toy, out);
+        obj.printToy(toy, out);
     }
 
     out << endl;

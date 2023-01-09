@@ -41,7 +41,7 @@ public:
     template <typename ToyType>
     void printToy(const ToyType &toy, std::ostream &out)
     {
-        toy.print(out);
+        out << toy;
     }
 
     void summariseGift();
