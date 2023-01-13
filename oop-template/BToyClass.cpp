@@ -160,3 +160,8 @@ void BToyClass::read(istream &in)
 {
     in >> *this;
 };
+
+ToyType BToyClass::getType()
+{
+    return type;
+};
