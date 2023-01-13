@@ -31,6 +31,7 @@ public:
     const std::string getPersonName() const;
     std::vector<shared_ptr<BToyClass>> getToys();
     const int getToysLength() const;
+    const int getToysLength(ToyType &) const;
     void setName(const std::string _name);
     void setDestination(const std::string _destination);
     void setPersonName(const std::string _personName);

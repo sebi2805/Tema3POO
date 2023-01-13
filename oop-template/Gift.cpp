@@ -309,3 +309,11 @@ Clone *Gift::clone()
 {
     return new Gift(*this);
 }
+const int Gift::getToysLength(ToyType &type) const
+{
+    int k = 0;
+    for (auto toy : toys)
+        if (toy->getType() == type)
+            k++;
+    return k;
+};
