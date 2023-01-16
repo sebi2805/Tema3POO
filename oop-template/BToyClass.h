@@ -40,7 +40,6 @@ public:
     float getWeight();
     int getAge();
     ToyType getType();
-
     void playSound() override;
     Clone *clone() override;
     const string getName() const;
